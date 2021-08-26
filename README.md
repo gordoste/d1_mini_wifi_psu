@@ -8,7 +8,7 @@ Firmware and GUI for a modified version of the Mini PSU from Silicon Chip's Feb 
 
 In my design, a daughter board connected via 2.54mm pitch pin headers routes signals to the correct pins on the D1 mini. 
 
-The GUI program acts as a server, waiting for the PSU to connect. The PSU connects to the GUI on startup, and everything works the same once the connection is established. The PSU also listens for connections on port 23. Connecting to this allows the user to specify the IP of the GUI program that the PSU should attempt to connect to. The only other firmware modification was to set the mux channel before reading values from the ADC.
+The GUI program acts as a server, waiting for the PSU to connect. The PSU connects to the GUI on startup, and everything works the same once the connection is established. The PSU also listens for connections on port 23. Connecting to this allows the user to pverride some basic parameters. The only other firmware modification was to set the mux channel before reading values from the ADC.
 
 ## Uploading to the D1 Mini
 
@@ -29,16 +29,15 @@ The GUI (in the src/Mini_Digital_PSU folder) has been modified as follows:
 + No use of serial ports. Therefore configuration and hotkeys related to this are removed.
 + A configuration parameter "port" can now be used to specify the port to listen on. The default is 23.
 
-## Configuring
+## Configuring the PSU
 
-There are 3 configuration parameters:
+There are 3 configuration parameters for the PSU firmware:
 
 + *ip* - the IP of the PC running the GUI.
 + *ssid* - the SSID of the WiFi network to connect to (overrides the hardcoded value)
 + *pass* - the password of the WiFi network to connect to (overrides the hardcoded value)
 
-To set these, connect to the PSU on port 23 and enter the parameter name followed by a space and then the desired value. The value will be saved to the flash filesystem so that it is restored after reboot.
-
+To set these, connect to the PSU on port 23 and enter the parameter name followed by a space and then the desired value. The value will be saved to the flash filesystem so that it is restored after reboot. Make sure you avoid typos - if the PSU has no WiFi connection, you'll need to either change the hardcoded defaults by reprogramming, or erase the flash filesystem to force a fallback to the existing hardcoded defaults. Either way, you're connecting via USB or serial. Feel free to submit a pull request if you want to add a WiFi connection timeout that puts the PSU into AP mode.
 
 ## Feedback / Requests For Help
 
