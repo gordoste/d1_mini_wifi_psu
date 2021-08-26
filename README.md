@@ -2,11 +2,11 @@
 
 Firmware and GUI for a modified version of the Mini PSU from Silicon Chip's Feb 2021 issue. See https://siliconchip.com.au to obtain the original article. Additions include:
 
-+ 2 transistors to allow switching the relay from the D1 mini's 3.3V logic (please feel free to tell me if there is a better way to do this. I tried using one transistor, but could not seem to get the relay to reliably trigger - now that I look at it again I think I need to go back and experiment a bit more on this)
++ 2 transistors to allow switching the relay from the D1 mini's 3.3V logic
 + Addition of TMUX1204 4:1 mux - the D1 mini only has one ADC. Sensing of supply voltage, output voltage and current are all done via this mux, which adds 3 extra analog inputs in return for the use of 2 digital outputs needed to select the mux channel.
 + Addition of AMS1117-5.0 regulator to provide the 5V rail from DC power (this also powers the D1 mini) - I would suggest anybody planning to feed more than 12V to the input should upgrade this.
 
-A daughter board connected via 2.54mm pitch pin headers routes signals to the correct pins on the D1 mini, allowing for the possibility of creating other daughter boards - for example, I also created a board for an Arduino Nano, to provide a wired alternative that's a little cheaper than the Uno. I have not tested that yet.
+In my design, a daughter board connected via 2.54mm pitch pin headers routes signals to the correct pins on the D1 mini. 
 
 The GUI program acts as a server, waiting for the PSU to connect. The PSU connects to the GUI on startup, and everything works the same once the connection is established. The PSU also listens for connections on port 23. Connecting to this allows the user to specify the IP of the GUI program that the PSU should attempt to connect to. The only other firmware modification was to set the mux channel before reading values from the ADC.
 
