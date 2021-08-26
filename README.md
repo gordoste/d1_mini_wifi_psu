@@ -35,7 +35,7 @@ There are 3 configuration parameters:
 
 + *ip* - the IP of the PC running the GUI.
 + *ssid* - the SSID of the WiFi network to connect to (overrides the hardcoded value)
-+ *password* - the password of the WiFi network to connect to (overrides the hardcoded value)
++ *pass* - the password of the WiFi network to connect to (overrides the hardcoded value)
 
 To set these, connect to the PSU on port 23 and enter the parameter name followed by a space and then the desired value. The value will be saved to the flash filesystem so that it is restored after reboot.
 
