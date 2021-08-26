@@ -1,0 +1,7 @@
+port=23
+ufactor=0.0183
+vfactor=12.5579
+jfactor=0.0022
+ifactor=102.7299
+PRESET3=3.3,0.3,3.3V
+sfactor=0.0183
