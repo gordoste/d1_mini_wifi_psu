@@ -160,7 +160,7 @@ void processCliCmd() {
         writeConfig();
     }
     if (strncasecmp_P(cliRcvBuf, "PASS ", 5) == 0) {
-        wifi_ssid = String(cliRcvBuf + 5);
+        wifi_pass = String(cliRcvBuf + 5);
         client.println("Pass set");
         Serial.println("Pass set");
         writeConfig();
